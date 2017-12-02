@@ -3,6 +3,9 @@
     angular.module('app').controller('UserCtrl', function($scope, $http, $element, moipService) {
 
         var vm = this;
+
+        vm.registerClient = false;
+
         vm.cliente = {
             "code": "cliente02",
             "email": "nome@exemplo.com.br",
@@ -79,8 +82,13 @@
             vm.plans = response.data;
         });
 
+        moipService.listClients().then(function (response){
+            vm.clients = response.data;
+        });
+
+
         vm.createSubscription = function (){
-            moipService.createSubscription(vm.assinatura).then(function (response){
+            moipService.createSubscription(vm.assinatura, vm.registerClient).then(function (response){
                 vm.moip_resp = response.data;
             });
         }

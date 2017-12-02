@@ -39,9 +39,10 @@ class SubscriptionsView(ModelViewSet):
             cliente=request.data.get('customer', dict()).get('code'))
         request.data['code'] = subscription.code
         data = json.dumps(request.data)
+        register = request.query_params['register']
         r = requests.post(
             "https://sandbox.moip.com.br/assinaturas/"
-            "v1/subscriptions?new_customer=true",
+            "v1/subscriptions?new_customer=" + register,
             data=data,
             headers=create_moip_header())
         return Response(json.loads(r.text))
@@ -53,6 +54,14 @@ class SubscriptionsView(ModelViewSet):
         plans = [{'code': plan['code'],
                   'name': plan['name']} for plan in r['plans']]
         return Response(plans)
+
+    @list_route(methods=('get',))
+    def get_clients(self, request, format=None):
+        r = requests.get("https://sandbox.moip.com.br/assinaturas/v1/customers",
+                         headers=create_moip_header()).json()
+        clients = [{'code': client['code'],
+                    'name': client['fullname']} for client in r['customers']]
+        return Response(clients)
 
 
 def create_moip_header():

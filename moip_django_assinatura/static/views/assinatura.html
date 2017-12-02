@@ -4,10 +4,27 @@
     </div>
     <div class="card client-form">
         <h2>Plano</h2>
-        <select name="mySelect" id="mySelect"
+        <select
           ng-options="plan.code as plan.name for plan in vm.plans"
           ng-model="vm.assinatura.plan.code"></select>
     </div>
-    <client-info client="vm.assinatura.customer"></client-info>
-    <credit-card-info card="vm.assinatura.customer.billing_info.credit_card" save-method="vm.createSubscription()"></credit-card-info>
+    <div ng-hide="registerClient" class="card client-form">
+        <h2>Cliente</h2>
+        <select
+          ng-options="client.code as client.name for client in vm.clients"
+          ng-model="vm.assinatura.costumer.code"></select>
+        <div style="text-align:center">
+            <button type="button" class="btn btn-default" ng-click="vm.createSubscription()">Criar</button>
+        </div>
+        <div style="text-align:center;margin:10px;">
+            <footer><a href="javascript:void(0);" ng-click="registerClient=true">Novo Cliente?</a></footer>
+        </div>
+    </div>
+    <div ng-show="registerClient">
+        <div style="text-align:center" class="card client-form">
+            <footer><a href="javascript:void(0);" ng-click="registerClient=false">Procurar Cliente Cadastrado</a></footer>
+        </div>
+        <client-info client="vm.assinatura.customer"></client-info>
+        <credit-card-info card="vm.assinatura.customer.billing_info.credit_card" save-method="vm.createSubscription()"></credit-card-info>
+    </div>
 </div>
