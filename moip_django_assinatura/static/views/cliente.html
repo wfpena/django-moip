@@ -1,5 +1,5 @@
 <div ng-controller="UserCtrl as vm" class="container">
     <h2>Cliente</h2>
-    <client-info client="vm.cliente"></client-info>
+    <client-info client="vm.cliente" save-method="vm.newClient()"></client-info>
     <credit-card-info card="vm.cliente.billing_info.credit_card"></credit-card-info>
 </div>

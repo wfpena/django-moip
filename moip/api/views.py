@@ -8,7 +8,7 @@ from rest_framework.utils import json
 from rest_framework.viewsets import ModelViewSet
 
 from moip.api.serializers import SubscriptionsSerializer
-from moip.models import Subscriptions
+from moip.models import Subscriptions, Client
 from moip_django_assinatura.settings import MOIP_TOKEN, MOIP_KEY
 
 
@@ -19,6 +19,9 @@ class SubscriptionsView(ModelViewSet):
 
     @list_route(methods=('post',))
     def create_client(self, request, format=None):
+        client = Client.objects.create(name=request.data['fullname'])
+        client.save()
+        request.data['code'] = client.code
         data = json.dumps(request.data)
         r = requests.post("https://sandbox.moip.com.br/assinaturas/v1/customers?new_vault=true", data=data, headers=create_moip_header())
         return Response(json.loads(r.text))

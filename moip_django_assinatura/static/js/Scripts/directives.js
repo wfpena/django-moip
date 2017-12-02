@@ -5,7 +5,8 @@
         restrict: 'E',
         replace: true,
         scope: {
-            client: '='
+            client: '=',
+            saveMethod: '&'
         },
         templateUrl: '/static/views/partials/clientInfo.html'
       }
