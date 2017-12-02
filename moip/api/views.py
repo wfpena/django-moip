@@ -22,7 +22,11 @@ class SubscriptionsView(ModelViewSet):
         client = Client.objects.create(name=request.data['fullname'])
         request.data['code'] = client.code
         data = json.dumps(request.data)
-        r = requests.post("https://sandbox.moip.com.br/assinaturas/v1/customers?new_vault=true", data=data, headers=create_moip_header())
+        r = requests.post(
+            "https://sandbox.moip.com.br/assinaturas/v1/"
+            "customers?new_vault=true",
+            data=data,
+            headers=create_moip_header())
         msg = json.loads(r.text)
         if msg['message'] != "Cliente criado com sucesso":
             client.delete()
@@ -31,24 +35,29 @@ class SubscriptionsView(ModelViewSet):
     @list_route(methods=('post',))
     def create_subscription(self, request, format=None):
         subscription = Subscriptions.objects.create(
-           plano=request.data.get('plan', dict()).get('code'),
-        cliente=request.data.get('customer', dict()).get('code'))
+            plano=request.data.get('plan', dict()).get('code'),
+            cliente=request.data.get('customer', dict()).get('code'))
         request.data['code'] = subscription.code
         data = json.dumps(request.data)
-        r = requests.post("https://sandbox.moip.com.br/assinaturas/v1/subscriptions?new_customer=true", data=data,
-                          headers=create_moip_header())
+        r = requests.post(
+            "https://sandbox.moip.com.br/assinaturas/"
+            "v1/subscriptions?new_customer=true",
+            data=data,
+            headers=create_moip_header())
         return Response(json.loads(r.text))
 
     @list_route(methods=('get',))
     def get_plans(self, request, format=None):
         r = requests.get("https://sandbox.moip.com.br/assinaturas/v1/plans",
-                          headers=create_moip_header()).json()
-        plans = [{'code': plan['code'], 'name': plan['name']} for plan in r['plans']]
+                         headers=create_moip_header()).json()
+        plans = [{'code': plan['code'],
+                  'name': plan['name']} for plan in r['plans']]
         return Response(plans)
 
 
 def create_moip_header():
     token = MOIP_TOKEN + ':' + MOIP_KEY
     headers = {'content-type': 'application/json',
-               'Authorization': 'Basic ' + base64.b64encode(token.encode('utf-8')).decode('utf-8')}
+               'Authorization': 'Basic ' +
+                                base64.b64encode(token.encode('utf-8')).decode('utf-8')}
     return headers

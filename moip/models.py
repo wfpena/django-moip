@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+
 class Subscriptions(models.Model):
     plano = models.CharField(max_length=255)
     cliente = models.CharField(max_length=255)
@@ -18,6 +19,7 @@ class Subscriptions(models.Model):
     class Meta:
         verbose_name = _('Assinatura')
         verbose_name_plural = _('Assinaturas')
+
 
 class Client(models.Model):
     name = models.CharField(max_length=255)
