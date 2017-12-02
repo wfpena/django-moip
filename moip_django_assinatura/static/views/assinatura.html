@@ -1,5 +1,13 @@
 <div ng-controller="UserCtrl as vm" class="container">
-    <h2>Assinatura</h2>
+    <div class="topbar">
+        <h2>Nova Assinatura</h2>
+    </div>
+    <div class="card client-form">
+        <h2>Plano</h2>
+        <select name="mySelect" id="mySelect"
+          ng-options="plan.code as plan.name for plan in vm.plans"
+          ng-model="vm.assinatura.plan.code"></select>
+    </div>
     <client-info client="vm.assinatura.customer"></client-info>
-    <credit-card-info card="vm.assinatura.customer.billing_info.credit_card"></credit-card-info>
+    <credit-card-info card="vm.assinatura.customer.billing_info.credit_card" save-method="vm.createSubscription()"></credit-card-info>
 </div>

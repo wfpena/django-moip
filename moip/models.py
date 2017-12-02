@@ -11,6 +11,10 @@ class Subscriptions(models.Model):
     def __str__(self):
         return self.plano + ' ' + self.cliente
 
+    @property
+    def code(self):
+        return 'assinatura{0}'.format(self.id)
+
     class Meta:
         verbose_name = _('Assinatura')
         verbose_name_plural = _('Assinaturas')

@@ -1,5 +1,5 @@
 <div class="card client-form">
-    <h3>Informações do Cartão</h3>
+    <h2>Informações do Cartão</h2>
     <form>
         <div class="form-group">
             <label>Nome Completo:</label>
@@ -13,6 +13,9 @@
             <label style="display:block;">Expiração:</label>
             <input ng-model="card.expiration_month" type="text" class="form-control date-form">
             <input ng-model="card.expiration_year" type="text" class="form-control date-form">
+        </div>
+        <div style="text-align:center">
+            <button type="button" class="btn btn-default" ng-click="saveMethod()">Criar</button>
         </div>
     </form>
 </div>

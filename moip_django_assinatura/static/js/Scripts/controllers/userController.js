@@ -34,8 +34,6 @@
         };
 
         vm.assinatura = {
-            "code": "assinatura01",
-            "amount": "9990",
             "plan": {
                 "code": "plano01"
             },
@@ -78,12 +76,14 @@
         }
 
         moipService.listPlans().then(function (response){
-            vm.moip_resp = response.data;
+            vm.plans = response.data;
         });
 
-        moipService.createSubscription(vm.cliente).then(function (response){
-            vm.moip_resp = response.data;
-        });
+        vm.createSubscription = function (){
+            moipService.createSubscription(vm.assinatura).then(function (response){
+                vm.moip_resp = response.data;
+            });
+        }
 
     });
 })();

@@ -17,13 +17,34 @@ a:hover{
     text-decoration: none;
 }
 
+h2{
+    font-size: 22px;
+}
+
 .client-form{
     padding: 10px;
     width: 50%;
     margin: 0 auto;
 }
 
+.topbar{
+    background-color: #e4dddd;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2px;
+}
+
 .date-form{
     display:inline-block;
     width:10%;
+}
+
+.tab-main{
+    margin:0;
+    padding: 10px;
+}
+
+.active-tab{
+    background-color: gainsboro;
 }

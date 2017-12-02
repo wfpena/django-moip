@@ -6,7 +6,6 @@
         replace: true,
         scope: {
             client: '=',
-            saveMethod: '&'
         },
         templateUrl: '/static/views/partials/clientInfo.html'
       }
@@ -17,7 +16,8 @@
         restrict: 'E',
         replace: true,
         scope: {
-            card: '='
+            card: '=',
+            saveMethod: '&'
         },
         templateUrl: '/static/views/partials/creditCardInfo.html'
       }

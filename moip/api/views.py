@@ -20,16 +20,22 @@ class SubscriptionsView(ModelViewSet):
     @list_route(methods=('post',))
     def create_client(self, request, format=None):
         client = Client.objects.create(name=request.data['fullname'])
-        client.save()
         request.data['code'] = client.code
         data = json.dumps(request.data)
         r = requests.post("https://sandbox.moip.com.br/assinaturas/v1/customers?new_vault=true", data=data, headers=create_moip_header())
-        return Response(json.loads(r.text))
+        msg = json.loads(r.text)
+        if msg['message'] != "Cliente criado com sucesso":
+            client.delete()
+        return Response(msg)
 
     @list_route(methods=('post',))
     def create_subscription(self, request, format=None):
+        subscription = Subscriptions.objects.create(
+           plano=request.data.get('plan', dict()).get('code'),
+        cliente=request.data.get('customer', dict()).get('code'))
+        request.data['code'] = subscription.code
         data = json.dumps(request.data)
-        r = requests.post("https://sandbox.moip.com.br/assinaturas/v1/customers?new_vault=true", data=data,
+        r = requests.post("https://sandbox.moip.com.br/assinaturas/v1/subscriptions?new_customer=true", data=data,
                           headers=create_moip_header())
         return Response(json.loads(r.text))
 
@@ -37,8 +43,8 @@ class SubscriptionsView(ModelViewSet):
     def get_plans(self, request, format=None):
         r = requests.get("https://sandbox.moip.com.br/assinaturas/v1/plans",
                           headers=create_moip_header()).json()
-        codes = [{'code': plan['code']} for plan in r['plans']]
-        return Response(codes)
+        plans = [{'code': plan['code'], 'name': plan['name']} for plan in r['plans']]
+        return Response(plans)
 
 
 def create_moip_header():
