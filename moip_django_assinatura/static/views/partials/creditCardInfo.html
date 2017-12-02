@@ -1,0 +1,18 @@
+<div class="card client-form">
+    <h3>Informações do Cartão</h3>
+    <form>
+        <div class="form-group">
+            <label>Nome Completo:</label>
+            <input ng-model="card.holder_name" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Número do Cartão:</label>
+            <input ng-model="card.number" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label style="display:block;">Expiração:</label>
+            <input ng-model="card.expiration_month" type="text" class="form-control date-form">
+            <input ng-model="card.expiration_year" type="text" class="form-control date-form">
+        </div>
+    </form>
+</div>

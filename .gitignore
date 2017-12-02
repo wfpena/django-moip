@@ -1,0 +1,4 @@
+# app
+*.sqlite3
+.idea/
+moip_django_assinatura/setting_envs.py

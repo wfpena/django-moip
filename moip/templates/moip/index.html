@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load staticfiles %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+        <script type="text/javascript" src="//assets.moip.com.br/v2/moip.min.js"></script>
+
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/angular.min.js' %}"></script>
+        <script src="{% static 'js/angular-cookies.min.js' %}"></script>
+        <script src="{% static 'js/angular-ui-router.min.js' %}"></script>
+        <script src="{% static 'js/Scripts/app.js' %}"></script>
+
+        <!--Angular Controllers-->
+        <script src="{% static 'js/Scripts/services.js' %}"></script>
+        <script src="{% static 'js/Scripts/directives.js' %}"></script>
+        <script src="{% static 'js/Scripts/controllers/userController.js' %}"></script>
+
+        <title>Moip Assinatura</title>
+    </head>
+    <body ng-app="app">
+        {%block content%}
+            <a ui-sref="assinatura"><h1>Assinatura</h1></a>
+            <a ui-sref="cliente"><h1>Cliente</h1></a>
+        {%endblock%}
+        <div ui-view></div>
+    </body>
+</html>

@@ -1,0 +1,133 @@
+<div class="card client-form">
+    <h2>Dados Pessoais</h2>
+    <form>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input ng-model="client.email" type="email" class="form-control" id="email" placeholder="Enter email"
+                   name="email">
+        </div>
+        <div class="form-group">
+            <label for="fullname">Nome Completo:</label>
+            <input ng-model="client.fullname" type="text" id="fullname" name="fullname" class="form-control"
+                   placeholder="Nome Completo">
+        </div>
+        <div class="form-group">
+            <label for="cpf">CPF:</label>
+            <input ng-model="client.cpf" type="text" id="cpf" name="fullname" class="form-control"
+                   placeholder="Nome Completo">
+        </div>
+        <div class="form-group">
+            <label style="display:block" for="phone_number">Telefone:</label>
+            <input style="width:10%;display:inline-block"  ng-model="client.phone_area_code" type="text" class="form-control">
+            <input style="width:80%;display:inline-block"  ng-model="client.phone_number" type="text" id="phone_number"
+                   class="form-control">
+        </div>
+        <div class="form-group">
+            <label style="display:block">Nascimento:</label>
+            <input ng-model="client.birthdate_day" type="text" id="birthday_day"
+                   class="form-control date-form">
+            <input ng-model="client.birthdate_month" type="text" id="birthday_month"
+                   class="form-control date-form">
+            <input style="width:15%" ng-model="client.birthdate_year" type="text" id="birthday_year"
+                   class="form-control date-form" maxlength="4">
+        </div>
+        <fieldset>
+            <legend>Dados de Endereço</legend>
+            <table cellspacing="10">
+
+                <tr>
+                    <td>
+                        <label for="rua">Rua:</label>
+                    </td>
+                    <td align="left">
+                        <input ng-model="client.address.street" type="text" name="rua">
+                    </td>
+                    <td>
+                        <label for="numero">Complemento:</label>
+                    </td>
+                    <td align="left">
+                        <input ng-model="client.address.complement" type="text" name="numero" size="4">
+                    </td>
+                    <td>
+                        <label for="numero">Numero:</label>
+                    </td>
+                    <td align="left">
+                        <input ng-model="client.address.number" type="text" name="numero" size="4">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="bairro">Bairro: </label>
+                    </td>
+                    <td align="left">
+                        <input ng-model="client.address.district" type="text" name="bairro">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="estado">Estado:</label>
+                    </td>
+                    <td align="left">
+                        <select ng-model="client.address.state" name="estado">
+                            <option value="ac">Acre</option>
+                            <option value="al">Alagoas</option>
+                            <option value="am">Amazonas</option>
+                            <option value="ap">Amapá</option>
+                            <option value="ba">Bahia</option>
+                            <option value="ce">Ceará</option>
+                            <option value="df">Distrito Federal</option>
+                            <option value="es">Espírito Santo</option>
+                            <option value="go">Goiás</option>
+                            <option value="ma">Maranhão</option>
+                            <option value="mt">Mato Grosso</option>
+                            <option value="ms">Mato Grosso do Sul</option>
+                            <option value="mg">Minas Gerais</option>
+                            <option value="pa">Pará</option>
+                            <option value="pb">Paraíba</option>
+                            <option value="pr">Paraná</option>
+                            <option value="pe">Pernambuco</option>
+                            <option value="pi">Piauí</option>
+                            <option value="rj">Rio de Janeiro</option>
+                            <option value="rn">Rio Grande do Norte</option>
+                            <option value="ro">Rondônia</option>
+                            <option value="rs">Rio Grande do Sul</option>
+                            <option value="rr">Roraima</option>
+                            <option value="sc">Santa Catarina</option>
+                            <option value="se">Sergipe</option>
+                            <option value="sp">São Paulo</option>
+                            <option value="to">Tocantins</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cidade">Cidade: </label>
+                    </td>
+                    <td align="left">
+                        <input ng-model="client.address.city" type="text" name="cidade">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cep">País: </label>
+                    </td>
+                    <td align="left">
+                        <input ng-model="client.address.country" type="text" name="cep" size="5" maxlength="5"> -
+                        <input type="text" name="cep2" size="3" maxlength="3">
+                    </td>
+                </tr>
+                <td>
+                    <label for="cep">CEP: </label>
+                </td>
+                <td align="left">
+                    <input ng-model="client.address.zipcode" type="text" name="cep" size="5" maxlength="5"> -
+                    <input type="text" name="cep2" size="3" maxlength="3">
+                </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <button type="button" class="btn btn-default" ng-click="vm.newClient()">Submit</button>
+        {[{vm.moip_resp}]}
+    </form>
+</div>
