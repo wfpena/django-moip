@@ -1,6 +1,10 @@
 <div ng-controller="UserCtrl as vm" class="container">
     <div class="topbar">
         <h2>Cadastrar Cliente</h2>
+        <div style="margin:10px;">
+            <button ng-show="!vm.filled" class="btn btn-default btn-primary"  ng-click="vm.autoFillClient();vm.filled=true;" type="button">Auto Preencher</button>
+            <button ng-show="vm.filled" class="btn btn-default btn-primary"  type="button" ng-click="vm.clear();vm.filled=false;">Limpar Formulário</button>
+        </div>
     </div>
     <client-info client="vm.cliente"></client-info>
     <credit-card-info card="vm.cliente.billing_info.credit_card" save-method="vm.newClient()"></credit-card-info>

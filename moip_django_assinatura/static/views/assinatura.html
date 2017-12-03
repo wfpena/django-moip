@@ -1,6 +1,10 @@
 <div ng-controller="UserCtrl as vm" class="container">
     <div class="topbar">
         <h2>Nova Assinatura</h2>
+        <div style="margin:10px;">
+            <button ng-show="!vm.filled && registerClient" class="btn btn-default btn-primary"  ng-click="vm.autoFillSubscription();vm.filled=true;" type="button">Auto Preencher</button>
+            <button ng-show="vm.filled && registerClient" class="btn btn-default btn-primary"  type="button" ng-click="vm.clear();vm.filled=false;">Limpar Formulário</button>
+        </div>
     </div>
     <div class="card client-form">
         <h2>Plano</h2>
@@ -13,7 +17,7 @@
         <select
           ng-options="client.code as client.name for client in vm.clients"
           ng-model="vm.assinatura.costumer.code"></select>
-        <div style="text-align:center">
+        <div style="text-align:center;margin:10px;">
             <button type="button" class="btn btn-default" ng-click="vm.createSubscription()">Criar</button>
         </div>
         <div style="text-align:center;margin:10px;">
