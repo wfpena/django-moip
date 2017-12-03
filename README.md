@@ -36,6 +36,7 @@ Na  aba Assinatura podem ser criados assinaturas de duas formas, usando os clien
 Na aba Cliente podem ser cadastrados novos clientes. Estes são inseridos tanto na base de dados quanto na sua conta Moip.
 
 ### TODO:
+* Mensagens de erro
 * Pagamento com Boleto
 * Validação dos campos
 * Cadastrar o cliente com a assinatura
