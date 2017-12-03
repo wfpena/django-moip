@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from moip_django_assinatura.setting_envs import MOIP_TOKEN, MOIP_KEY
+# from moip_django_assinatura.setting_envs import MOIP_TOKEN, MOIP_KEY
 
-MOIP_KEY = MOIP_KEY
-MOIP_TOKEN = MOIP_TOKEN
+MOIP_KEY = 'SUA_KEY'
+MOIP_TOKEN = 'SEU_TOKEN'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
