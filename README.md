@@ -1,4 +1,4 @@
-# Integração Django Moip Assinaturas
+# Integração Django-Moip Assinaturas
 
 Projeto de integração entre Django, AngularJS e o API do Moip para criação de assinaturas.
 
@@ -35,4 +35,8 @@ Na  aba Assinatura podem ser criados assinaturas de duas formas, usando os clien
 
 Na aba Cliente podem ser cadastrados novos clientes. Estes são inseridos tanto na base de dados quanto na sua conta Moip.
 
-### TODO
+### TODO:
+* Pagamento com Boleto
+* Validação dos campos
+* Cadastrar o cliente com a assinatura
+* Testes

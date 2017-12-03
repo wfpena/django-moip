@@ -1,7 +1,6 @@
 (function() {
     'use strict';
     angular.module('app').controller('UserCtrl', function($scope, $http, $element, moipService) {
-
         var vm = this;
         vm.filled = false;
         vm.registerClient = false;
